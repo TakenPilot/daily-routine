@@ -93,11 +93,11 @@ while len(links.difference(visited_links)) and len(visited_links) < 20 + len(pre
 print('\nall links:\n')
 pp.pprint(links) #needs to be db
 print('\nvisited links:\n')
-pp.pprint(visited_links) #needs to be db
+pp.pprint([x for x in visited_links if x not in prev_visited_articles]) #needs to be db
 print('\nfound articles:\n')
-pp.pprint(article_links)
+pp.pprint([x for x in article_links if x not in prev_article_links])
 print('\nfound dataset:\n')
-pp.pprint(dataset )
+pp.pprint({x: y for x, y in dataset.items() if x not in prev_dataset})
 
 # save seen articles, so we don't fetch them again
 os.makedirs('.tmp', exist_ok=True)
